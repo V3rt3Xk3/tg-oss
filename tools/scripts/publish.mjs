@@ -100,7 +100,7 @@ try {
   );
 }
 process.chdir(path.resolve(`../../dist/${name}`));
-fsExtra.copySync(`./../../dist/out-tsc/packages/bio-parsers/src`, `./`);
+fsExtra.copySync(`./../../dist/out-tsc/packages/bio-parsers/src`, `./src`);
 json = JSON.parse(readFileSync(`package.json`).toString());
 try {
   json.version = version;
@@ -108,7 +108,7 @@ try {
   json.license = "MIT";
   json.main = "index.cjs.js";
   json.module = "index.js";
-  json.types = "index.d.ts";
+  json.types = "src/index.d.ts";
   json.dependencies = { ...deps, ...json.dependencies };
   writeFileSync(`package.json`, JSON.stringify(json, null, 2));
 } catch (e) {
