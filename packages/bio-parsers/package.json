@@ -1,6 +1,6 @@
 {
-  "name": "@teselagen/bio-parsers",
-  "version": "0.4.22",
+  "name": "@t1l3s/bio-parsers",
+  "version": "0.5.2",
   "type": "module",
   "dependencies": {
     "@gmod/gff": "^1.2.1",

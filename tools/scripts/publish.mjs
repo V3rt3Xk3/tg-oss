@@ -9,6 +9,7 @@
 
 import { execSync } from "child_process";
 import { readFileSync, writeFileSync } from "fs";
+import fsExtra from "fs-extra";
 import chalk from "chalk";
 import devkit from "@nx/devkit";
 import path from "path";
@@ -99,12 +100,15 @@ try {
   );
 }
 process.chdir(path.resolve(`../../dist/${name}`));
+fsExtra.copySync(`./../../dist/out-tsc/packages/bio-parsers/src`, `./src`);
 json = JSON.parse(readFileSync(`package.json`).toString());
 try {
   json.version = version;
-  // json.type = "commonjs";
-  delete json.type;
+  json.type = "module";
   json.license = "MIT";
+  json.main = "index.cjs.js";
+  json.module = "index.js";
+  json.types = "src/index.d.ts";
   json.dependencies = { ...deps, ...json.dependencies };
   writeFileSync(`package.json`, JSON.stringify(json, null, 2));
 } catch (e) {
