@@ -856,17 +856,17 @@
       "ove": [
         {
           "source": "ove",
+          "target": "sequence-utils",
+          "type": "static"
+        },
+        {
+          "source": "ove",
           "target": "ui",
           "type": "static"
         },
         {
           "source": "ove",
           "target": "range-utils",
-          "type": "static"
-        },
-        {
-          "source": "ove",
-          "target": "sequence-utils",
           "type": "static"
         },
         {
