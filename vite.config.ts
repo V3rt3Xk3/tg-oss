@@ -19,14 +19,14 @@ const conf = ({
   dir: string;
 }) =>
   defineConfig(({ command }) => ({
-    cacheDir: `../../node_modules/.vite/${name}`,
+    cacheDir: `${dir}/../../node_modules/.vite/${name}`,
     plugins: [
       dts({
-        entryRoot: "src",
+        entryRoot: `${dir}/src`,
         tsconfigPath: joinPathFragments(dir, "tsconfig.json")
       }),
       viteTsConfigPaths({
-        root: "../../"
+        root: `${dir}/../../`
       }),
       ...(command === "build"
         ? [
@@ -34,12 +34,12 @@ const conf = ({
             viteStaticCopy({
               targets: [
                 {
-                  src: "./src",
-                  dest: "."
+                  src: `${dir}/src`,
+                  dest: `${dir}`
                 },
                 {
-                  src: "./README.md",
-                  dest: "."
+                  src: `${dir}/README.md`,
+                  dest: `${dir}`
                 }
               ]
             })
@@ -67,7 +67,7 @@ const conf = ({
       minify: false,
       target: "es2015",
       emptyOutDir: true,
-      outDir: `../../dist/${name}`,
+      outDir: `${dir}/../../dist/${name}`,
       lib: {
         // Could also be a dictionary or array of multiple entry points.
         entry: "src/index.js",
@@ -87,7 +87,7 @@ const conf = ({
     },
     test: {
       globals: true,
-      cacheDir: "../../node_modules/.vitest",
+      cacheDir: `${dir}../../node_modules/.vitest`,
       environment: testEnvironment || "node",
       include: [
         "src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}",
