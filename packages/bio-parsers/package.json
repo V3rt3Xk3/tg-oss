@@ -1,6 +1,6 @@
 {
   "name": "@t1l3s/bio-parsers",
-  "version": "0.5.2",
+  "version": "0.5.3",
   "type": "module",
   "dependencies": {
     "@gmod/gff": "^1.2.1",
